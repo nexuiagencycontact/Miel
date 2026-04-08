@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanz Store | Engineering Nature & Growth</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Correction immédiate des liens bleus et design NexUI */
+        :root { --primary: #c9a227; --dark: #0a0a0a; }
+        body { font-family: 'Inter', sans-serif; color: var(--dark); margin: 0; background: #fdfdfd; }
+        a { color: inherit; text-decoration: none; } /* Supprime le bleu des liens */
+        
+        /* Navigation Premium */
+        header.glass { background: rgba(255,255,255,0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .btn-nav { background: var(--dark); color: white !important; padding: 10px 20px; border-radius: 8px; font-weight: 600; transition: 0.3s; }
+        .btn-nav:hover { background: var(--primary); }
+
+        /* Hero & Badges */
+        .badge-growth { background: #f4f1ea; color: var(--primary); display: inline-block; padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; margin-bottom: 20px; letter-spacing: 1px; }
+        h1 span { color: var(--primary); }
+
+        /* Section Spéciale : Achats Groupés */
+        .special-card { background: var(--dark); color: white; padding: 40px; border-radius: 30px; margin: 40px auto; text-align: center; max-width: 1000px; position: relative; overflow: hidden; }
+        .special-card h2 { font-size: 2rem; margin-bottom: 15px; color: var(--primary); }
+        .tag-gold { background: var(--primary); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; position: absolute; top: 20px; right: 20px; }
+
+        /* Filtres - Fini le gris triste */
+        .filter-container { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; padding: 30px 5%; }
+        .filter-btn { border: 1px solid #eee; background: white; padding: 12px 22px; border-radius: 50px; cursor: pointer; transition: 0.3s; font-weight: 500; font-size: 0.85rem; }
+        .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .filter-btn.active { background: var(--dark); color: white; border-color: var(--dark); }
+
+        /* Widget IA */
+        .ia-widget { background: white; border: 1px solid #f0f0f0; padding: 30px; border-radius: 25px; margin: 40px 0; box-shadow: 0 10px 40px rgba(0,0,0,0.03); }
+        .ai-input-group { display: flex; gap: 10px; margin-top: 20px; }
+        .ai-input-group input { flex: 1; padding: 15px; border-radius: 12px; border: 1px solid #eee; outline: none; }
+        .ai-input-group button { background: var(--dark); color: white; border: none; padding: 0 25px; border-radius: 12px; cursor: pointer; font-weight: bold; }
+
+        /* Bouton WhatsApp Flottant NexUI */
+        #wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(37,211,102,0.4); z-index: 2000; cursor: pointer; border: none; }
+    </style>
+</head>
+<body>
+
+    <header class="glass" style="position: sticky; top: 0; z-index: 1500; padding: 15px 5%;">
+        <nav style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="logo" style="font-weight: 800; font-size: 1.4rem;">KANZ<span style="color: var(--primary);">STORE</span></div>
+            <ul style="display: flex; list-style: none; gap: 25px; align-items: center; margin: 0; padding: 0;">
+                <li><a href="#produits">Catalogue</a></li>
+                <li><a href="#groupes">Achats Groupés</a></li>
+                <li><a href="#ia-expert">Conseils Pro</a></li>
+                <li><button onclick="orderGenericWA('Demande de devis global')" class="btn-nav">DEVIS</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <section id="hero" style="text-align: center; padding: 80px 20px;">
+            <div class="badge-growth">SYSTEMS & NATURAL ENGINEERING</div>
+            <h1 style="font-size: 3.2rem; letter-spacing: -2px; line-height: 1.1;">L'excellence au service de votre <br><span>Croissance</span>.</h1>
+            <p style="color: #666; max-width: 650px; margin: 25px auto; font-size: 1.1rem;">
+                Grossiste expert en miels rares du Yémen et du Monde. Nous fournissons aux revendeurs des produits d'exception et des solutions d'automation marketing.
+            </p>
+        </section>
+
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterCat('all')">Tous les produits</button>
+            <button class="filter-btn" onclick="filterCat('yemen')">1. Miels Yémen</button>
+            <button class="filter-btn" onclick="filterCat('monde')">2. Miels Monde</button>
+            <button class="filter-btn" onclick="filterCat('sante')">3. Santé & Bien-être</button>
+            <button class="filter-btn" onclick="filterCat('gourmand')">4. Miels Gourmands</button>
+            <button class="filter-btn" onclick="filterCat('complements')">5. Compléments</button>
+            <button class="filter-btn" onclick="filterCat('huiles')">6. Huiles</button>
+            <button class="filter-btn" onclick="filterCat('epicerie')">7. Épicerie Fine</button>
+            <button class="filter-btn" onclick="filterCat('cosmetique')">8. Cosmétique</button>
+        </div>
+
+        <section id="produits">
+            <div id="product-grid" class="grid"></div>
+        </section>
+
+        <section id="groupes" style="padding: 60px 0;">
+            <div class="special-card shadow">
+                <span class="tag-gold">GROWTH OFFER</span>
+                <h2>Système d'Achats Groupés</h2>
+                <p style="opacity: 0.9; max-width: 700px; margin: 0 auto 25px;">
+                    Optimisez vos coûts sans être un professionnel. Regroupez vos commandes entre amis ou en famille et bénéficiez de nos tarifs dégressifs dès 10 unités commandées.
+                </p>
+                <button onclick="orderGenericWA('Infos Achats Groupés')" style="background: var(--primary); color: white; border: none; padding: 15px 35px; border-radius: 12px; font-weight: bold; cursor: pointer;">
+                    Lancer un groupe d'achat
+                </button>
+            </div>
+        </section>
+
+        <section id="ia-expert" style="padding: 40px 0;">
+            <div class="ia-widget">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                    <div style="background: var(--dark); color: white; width: 45px; height: 45px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800;">IA</div>
+                    <div>
+                        <h3 style="margin:0;">Assistant Marketing Kanz</h3>
+                        <p style="margin:0; font-size: 0.8rem; color: #888;">Optimisation de vos tunnels de revente</p>
+                    </div>
+                </div>
+                <div id="ai-display" style="background: #f9f9f9; padding: 20px; border-radius: 15px; min-height: 60px; border-left: 4px solid var(--primary);">
+                    "Bonjour ! Je peux vous aider à choisir les variétés les plus rentables selon votre canal de distribution. Que vendez-vous ?"
+                </div>
+                <div class="ai-input-group">
+                    <input type="text" id="ai-input" placeholder="Ex: Comment bien revendre le Sidr Maliki sur Instagram ?">
+                    <button onclick="askKanzIA()">Analyser</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="background: #000; color: #fff; padding: 40px 5%; text-align: center; font-size: 0.85rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; opacity: 0.6;">
+            <p>© 2026 KANZ STORE | GLOBAL GROWTH LOGISTICS</p>
+            <div>
+                <span style="margin-right: 15px;">NEXUI AGENCY SYSTEM</span>
+                <a href="admin.html" style="opacity: 0.2;">.</a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="wa-float" onclick="orderGenericWA('Contact Direct Site')" title="Contactez-nous">
+        <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.025 3.14l-.652 2.383 2.443-.64c.822.454 1.77.7 2.952.701h.002c3.181 0 5.767-2.586 5.768-5.766 0-3.181-2.587-5.765-5.77-5.765zm3.377 8.216c-.147.414-.734.757-1.02.793-.284.034-.539.155-1.78-.337-1.493-.591-2.455-2.115-2.529-2.213-.074-.099-.604-.803-.604-1.532 0-.73.382-1.09.518-1.242.136-.151.296-.189.395-.189.1 0 .201.001.288.005.093.004.218-.035.341.265.124.3.424 1.034.461 1.109.037.075.062.163.013.262-.049.098-.074.159-.148.246-.074.086-.155.193-.222.259-.074.073-.151.153-.065.3.086.148.384.634.823 1.026.565.505 1.042.662 1.191.736.148.074.234.062.321-.037.086-.1.371-.433.47-.582.099-.149.198-.124.333-.074.136.05 1.162.548 1.162.548.037.018.062.037.086.074.025.037.025.213-.122.627z"/>
+        </svg>
+    </button>
+
+    <script src="app.js"></script>
+</body>
+</html>
