@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin | Kanz Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body style="background: #f0f0f0;">
+    <div id="login-screen" style="max-width: 400px; margin: 100px auto; text-align: center;" class="glass-card">
+        <h2>Accès Restreint</h2>
+        <input type="password" id="admin-code" placeholder="Code" style="padding: 15px; width: 100%; border-radius: 10px; border: 1px solid #ddd;">
+        <button onclick="checkAccess()" class="btn-primary" style="margin-top: 20px; width: 100%;">Connexion</button>
+    </div>
+
+    <div id="admin-content" style="display: none; padding: 40px;" class="container">
+        <h1>Gestion Catalogue</h1>
+        <div class="glass-card" style="padding: 30px; background: white;">
+            <input type="text" id="p-name" placeholder="Nom du produit">
+            <select id="p-category">
+                <option value="yemen">Yémen</option>
+                <option value="monde">Monde</option>
+                <option value="sante">Santé</option>
+                <option value="gourmand">Gourmand</option>
+                <option value="complements">Compléments</option>
+                <option value="huiles">Huiles</option>
+                <option value="epicerie">Épicerie</option>
+                <option value="cosmetique">Cosmétique</option>
+            </select>
+            <input type="text" id="p-formats" placeholder="Formats (ex: 5kg, 10kg, 20kg)">
+            <input type="text" id="p-price" placeholder="Prix de base">
+            <input type="file" id="p-file">
+            <button onclick="saveProduct()" class="btn-primary">Publier</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
