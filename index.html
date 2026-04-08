@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanz Store | Grossiste & Growth Partner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header class="glass">
+        <nav>
+            <div class="logo">KANZ <span style="color:var(--primary)">STORE</span></div>
+            <ul class="nav-links">
+                <li><a href="#produits">Catalogue</a></li>
+                <li><a href="#ia-expert">Conseils Marketing</a></li>
+                <li><a href="#contact-section" class="btn-cta">Espace Pro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>L'ingénierie naturelle au service de votre <span>Croissance</span>.</h1>
+            <p>Grossiste expert : Miels rares, Super-aliments et Huiles. Solutions d'automation pour revendeurs.</p>
+        </section>
+
+        <div id="filters" class="filter-container">
+            <button class="filter-btn active" onclick="filterCat('all')">Tous les produits</button>
+            <button class="filter-btn" onclick="filterCat('yemen')">1. Miels Yémen</button>
+            <button class="filter-btn" onclick="filterCat('monde')">2. Miels Monde</button>
+            <button class="filter-btn" onclick="filterCat('sante')">3. Santé & Bien-être</button>
+            <button class="filter-btn" onclick="filterCat('gourmand')">4. Miels Gourmands</button>
+            <button class="filter-btn" onclick="filterCat('complements')">5. Compléments</button>
+            <button class="filter-btn" onclick="filterCat('huiles')">6. Huiles</button>
+            <button class="filter-btn" onclick="filterCat('epicerie')">7. Épicerie Fine</button>
+            <button class="filter-btn" onclick="filterCat('cosmetique')">8. Cosmétique</button>
+        </div>
+
+        <section id="produits">
+            <div id="product-grid" class="grid"></div>
+        </section>
+
+        <section id="ia-expert" class="container glass">
+            <div class="ia-content">
+                <span class="badge">NEXUI AUTOMATION</span>
+                <h2>Assistant IA : Stratégie de Vente</h2>
+                <p>Besoin de conseils pour revendre nos produits ? Posez vos questions à notre IA pour optimiser votre marketing.</p>
+                <div id="ai-chat-box" class="chat-container">
+                    <div id="ai-response">"Bonjour ! Je peux vous aider à choisir les produits les plus rentables selon votre profil de client. Quel est votre canal de vente (Boutique, Web, Réseaux) ?"</div>
+                    <div class="chat-input-area">
+                        <input type="text" id="ai-input" placeholder="Demander un conseil marketing...">
+                        <button onclick="askAI()">Conseiller</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-tech">
+        <span>KANZ STORE &copy; 2026 | Powered by NexUI</span>
+        <a href="admin.html" class="admin-link">.</a>
+    </footer>
+
+    <div id="whatsapp-widget">
+        <a href="https://wa.me/33600000000" target="_blank" class="wa-btn shadow">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+            <span>Commander / Devis Pro</span>
+        </a>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
