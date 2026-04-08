@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Kanz Store Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div id="login-screen">
+        <div class="glass" style="max-width: 350px; margin: 100px auto; padding: 40px; text-align: center; border-radius: 20px;">
+            <h2 style="color: var(--primary);">KANZ ADMIN</h2>
+            <input type="password" id="admin-code" placeholder="Code secret" style="width:100%; padding:12px; margin: 20px 0; border-radius:8px; border:1px solid #ddd; text-align:center;">
+            <button onclick="checkAccess()" style="width:100%; background:var(--primary); color:white; border:none; padding:15px; border-radius:8px; font-weight:bold; cursor:pointer;">Entrer</button>
+        </div>
+    </div>
+
+    <div id="admin-content" style="display: none; padding: 20px;">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="glass" style="padding: 30px; border-radius: 20px; margin-bottom: 30px;">
+                <h3>Ajouter un produit (Gros/Demi-Gros)</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                    <input type="text" id="p-name" placeholder="Nom (ex: Miel de Sidr Maliki)">
+                    <select id="p-category">
+                        <option value="miel">Miel (Standard)</option>
+                        <option value="gros">Produit Exclusivement Gros</option>
+                    </select>
+                    <input type="number" id="p-price" placeholder="Prix indicatif au kg (€)">
+                    <input type="number" id="p-stock" placeholder="Stock disponible (kg)">
+                    <div style="grid-column: span 2;">
+                        <textarea id="p-desc" placeholder="Description courte (Origine, texture...)" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd;"></textarea>
+                    </div>
+                    <div style="grid-column: span 2;">
+                        <label style="display:block; margin-bottom:5px; font-size:0.8rem; color:#666;">Photo du produit :</label>
+                        <input type="file" id="p-file" accept="image/*" style="width:100%;">
+                    </div>
+                </div>
+                <button id="btn-save" onclick="saveProduct()" style="margin-top:20px; width:100%; background:var(--primary); color:white; border:none; padding:15px; border-radius:8px; font-weight:bold; cursor:pointer;">Enregistrer et mettre en ligne</button>
+            </div>
+
+            <h3>Inventaire Actuel</h3>
+            <div id="admin-product-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px;"></div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

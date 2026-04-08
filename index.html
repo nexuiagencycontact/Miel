@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanz Store | Miels d'Exception en Gros</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header class="glass">
+        <nav>
+            <div class="logo" id="main-title" style="font-weight: bold; font-size: 1.5rem; color: var(--primary);">KANZ STORE</div>
+            <ul>
+                <li><a href="#produits">Nos Miels</a></li>
+                <li><a href="#groupes">Achats Groupés</a></li>
+                <li><a href="#contact-section">Contact / Devis</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Miels d'Exception en <span style="color:var(--primary)">Gros & Demi-Gros</span></h1>
+            <p style="font-size: 1.2rem; color: #666; max-width: 700px; margin: 0 auto;">
+                Économisez ensemble : Profitez de nos tarifs préférentiels pour vos commandes professionnelles ou vos achats groupés entre amis.
+            </p>
+        </section>
+
+        <section id="groupes" style="padding: 40px 5%; background: #fffbeb; border-radius: 20px; margin: 20px 5%; text-align: center;">
+            <h2 style="color: var(--primary);">L'Achat Groupé, comment ça marche ?</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px 0;">
+                <div class="glass" style="padding: 20px; border-radius: 15px;">
+                    <h3>1. Choisissez</h3>
+                    <p>Sélectionnez vos miels favoris parmi notre sélection.</p>
+                </div>
+                <div class="glass" style="padding: 20px; border-radius: 15px;">
+                    <h3>2. Regroupez</h3>
+                    <p>Cumulez vos commandes avec vos proches pour atteindre le prix de gros.</p>
+                </div>
+                <div class="glass" style="padding: 20px; border-radius: 15px;">
+                    <h3>3. Économisez</h3>
+                    <p>Un seul devis, un seul envoi, et des tarifs imbattables pour tous.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="produits">
+            <h2 style="text-align: center; margin-top: 40px;">Notre Catalogue Professionnel</h2>
+            <div id="product-grid" class="grid">
+                </div>
+        </section>
+
+        <section id="contact-section" style="padding: 50px 5%;">
+            <div class="glass" style="max-width: 600px; margin: 0 auto; padding: 30px; border-radius: 20px;">
+                <h2 style="text-align: center; margin-bottom: 20px;">Demander un Devis</h2>
+                <form id="contact-form" style="display: flex; flex-direction: column; gap: 15px;">
+                    <input type="text" placeholder="Nom complet / Société" required style="padding: 12px; border-radius: 10px; border: 1px solid #ddd;">
+                    <input type="email" placeholder="Email" required style="padding: 12px; border-radius: 10px; border: 1px solid #ddd;">
+                    <select id="request-type" style="padding: 12px; border-radius: 10px; border: 1px solid #ddd;">
+                        <option value="gros">Vente en Gros (Pro)</option>
+                        <option value="groupe">Achat Groupé (Particuliers)</option>
+                    </select>
+                    <textarea placeholder="Détaillez votre besoin (Quantité estimée, variétés...)" rows="4" style="padding: 12px; border-radius: 10px; border: 1px solid #ddd;"></textarea>
+                    <button type="submit" style="background: var(--primary); color: white; border: none; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer;">Envoyer ma demande</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-tech" style="background: #000; color: #fff; padding: 30px; text-align: center; font-size: 0.8rem;">
+        <div>KANZ STORE : <span id="system-status">EN LIGNE</span> | <a href="admin.html" style="color: #444; text-decoration: none;">Accès Gestion</a></div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
